@@ -23,6 +23,24 @@ const userSchema = mongoose.Schema(
         }
       },
     },
+    phone: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      validate(value) {
+        if (!value.match(/^[0-9]{10}$/)) {
+          throw new Error('Invalid phone number');
+        }
+      },
+    },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+    },
     password: {
       type: String,
       required: true,
@@ -33,7 +51,7 @@ const userSchema = mongoose.Schema(
           throw new Error('Password must contain at least one letter and one number');
         }
       },
-      private: true, // used by the toJSON plugin
+      private: true,
     },
     role: {
       type: String,
