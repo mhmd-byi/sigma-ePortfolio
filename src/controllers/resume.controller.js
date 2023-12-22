@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const { resumeService } = require('../services');
 
 const createResume = catchAsync(async (req, res) => {
-  const resume = await resumeService.createResume(req.body);
+  const resume = await resumeService.createResume(req.body.data);
   res.status(httpStatus.CREATED).send(resume);
 });
 

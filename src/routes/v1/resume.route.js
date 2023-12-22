@@ -7,13 +7,13 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(validate(resumeValidation.createUser), resumeController.createResume)
-  .get(validate(resumeValidation.getUsers), resumeController.getResumes);
+  .post(validate(resumeValidation.createResume), resumeController.createResume)
+  .get(validate(resumeValidation.getResumes), resumeController.getResumes);
 
 router
   .route('/:resumeId')
-  .get(validate(resumeValidation.getUser), resumeController.getResume)
-  .patch(validate(resumeValidation.updateUser), resumeController.updateResume)
-  .delete(validate(resumeValidation.deleteUser), resumeController.deleteResume);
+  .get(validate(resumeValidation.getResume), resumeController.getResume)
+  .patch(validate(resumeValidation.updateResume), resumeController.updateResume)
+  .delete(validate(resumeValidation.deleteResume), resumeController.deleteResume);
 
 module.exports = router;

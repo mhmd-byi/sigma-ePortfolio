@@ -4,40 +4,7 @@ const { toJSON, paginate } = require('./plugins');
 
 const resumeSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
-      validate(value) {
-        if (!validator.isEmail(value)) {
-          throw new Error('Invalid email');
-        }
-      },
-    },
-    phone: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      validate(value) {
-        if (!value.match(/^[0-9]{10}$/)) {
-          throw new Error('Invalid phone number');
-        }
-      },
-    },
     address: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-    jobTitle: {
         type: String,
         required: true,
         trim: true,
@@ -98,6 +65,11 @@ const resumeSchema = mongoose.Schema(
         type: String,
         trim: true,
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+  },
   },
   {
     timestamps: true,
