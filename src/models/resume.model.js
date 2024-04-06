@@ -4,6 +4,18 @@ const { toJSON, paginate } = require('./plugins');
 
 const resumeSchema = mongoose.Schema(
   {
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    phone: {
+        type: String,
+        required: true,
+    },
     address: {
         type: String,
         required: true,
@@ -13,7 +25,7 @@ const resumeSchema = mongoose.Schema(
         type: String,
         trim: true,
     },
-    about: {
+    aboutMe: {
         type: String,
         trim: true,
     },
@@ -26,24 +38,27 @@ const resumeSchema = mongoose.Schema(
         trim: true,
     },
     skills: {
-        type: String,
+        type: [String],
         trim: true,
     },
-    languages: {
-        type: String,
+    techSkills: {
+        type: [String],
         trim: true,
     },
-    interest: {
+    courseName: {
         type: String,
         trim: true,
+        required: true,
     },
-    course: {
+    courseStartYear: {
         type: String,
         trim: true,
+        required: true,
     },
-    year: {
+    courseEndYear: {
         type: String,
         trim: true,
+        required: true,
     },
     percentage: {
         type: String,
@@ -57,7 +72,11 @@ const resumeSchema = mongoose.Schema(
         type: String,
         trim: true,
     },
-    workingYear: {
+    workingStartYear: {
+        type: String,
+        trim: true,
+    },
+    workingEndYear: {
         type: String,
         trim: true,
     },
@@ -66,16 +85,37 @@ const resumeSchema = mongoose.Schema(
         trim: true,
     },
     bannerPhoto: {
-        type: String,
+        type: [String],
         trim: true,
     },
+    introVideo: {
+        type: [String],
+    },
     profilePhoto: {
-        type: String,
+        type: [String],
         trim: true,
     },
     theme: {
         type: String,
         trim: true,
+        required: true,
+    },
+    linkedInProfileUrl: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+    achievements: {
+        type: [String],
+    },
+    certificate: {
+        type: [String],
+    },
+    userCompanyProfile: {
+        type: String,
+    },
+    universityName: {
+        type: String,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
