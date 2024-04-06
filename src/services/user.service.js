@@ -8,10 +8,29 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<User>}
  */
 const createUser = async (userBody) => {
-  if (await User.isEmailTaken(userBody.email)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+  try {
+    if (await User.isEmailTaken(userBody.email)) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+    }
+    if (await User.isPhoneTaken(userBody.phone)) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Phone number already taken');
+    }
+    if (userBody.phone.length >= 11) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Phone number should be of 10 digits');
+    }
+    return User.create(userBody);
+  } catch (e) {
+    if (await User.isEmailTaken(userBody.email)) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+    }
+    if (await User.isPhoneTaken(userBody.phone)) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Phone number already taken');
+    }
+    if (userBody.phone.length >= 11) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Phone number should be of 10 digits');
+    }
+    return e;
   }
-  return User.create(userBody);
 };
 
 /**

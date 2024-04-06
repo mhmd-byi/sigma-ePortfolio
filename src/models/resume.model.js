@@ -5,39 +5,18 @@ const { toJSON, paginate } = require('./plugins');
 const resumeSchema = mongoose.Schema(
   {
     name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
-      validate(value) {
-        if (!validator.isEmail(value)) {
-          throw new Error('Invalid email');
-        }
-      },
-    },
-    phone: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      validate(value) {
-        if (!value.match(/^[0-9]{10}$/)) {
-          throw new Error('Invalid phone number');
-        }
-      },
-    },
-    address: {
         type: String,
         required: true,
-        trim: true,
     },
-    jobTitle: {
+    email: {
+        type: String,
+        required: true,
+    },
+    phone: {
+        type: String,
+        required: true,
+    },
+    address: {
         type: String,
         required: true,
         trim: true,
@@ -46,7 +25,7 @@ const resumeSchema = mongoose.Schema(
         type: String,
         trim: true,
     },
-    about: {
+    aboutMe: {
         type: String,
         trim: true,
     },
@@ -59,24 +38,27 @@ const resumeSchema = mongoose.Schema(
         trim: true,
     },
     skills: {
-        type: String,
+        type: [String],
         trim: true,
     },
-    languages: {
-        type: String,
+    techSkills: {
+        type: [String],
         trim: true,
     },
-    interest: {
+    courseName: {
         type: String,
         trim: true,
+        required: true,
     },
-    course: {
+    courseStartYear: {
         type: String,
         trim: true,
+        required: true,
     },
-    year: {
+    courseEndYear: {
         type: String,
         trim: true,
+        required: true,
     },
     percentage: {
         type: String,
@@ -90,7 +72,11 @@ const resumeSchema = mongoose.Schema(
         type: String,
         trim: true,
     },
-    workingYear: {
+    workingStartYear: {
+        type: String,
+        trim: true,
+    },
+    workingEndYear: {
         type: String,
         trim: true,
     },
@@ -98,6 +84,44 @@ const resumeSchema = mongoose.Schema(
         type: String,
         trim: true,
     },
+    bannerPhoto: {
+        type: [String],
+        trim: true,
+    },
+    introVideo: {
+        type: [String],
+    },
+    profilePhoto: {
+        type: [String],
+        trim: true,
+    },
+    theme: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+    linkedInProfileUrl: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+    achievements: {
+        type: [String],
+    },
+    certificate: {
+        type: [String],
+    },
+    userCompanyProfile: {
+        type: String,
+    },
+    universityName: {
+        type: String,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+  },
   },
   {
     timestamps: true,

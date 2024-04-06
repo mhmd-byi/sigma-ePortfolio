@@ -26,13 +26,7 @@ const userSchema = mongoose.Schema(
     phone: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
-      validate(value) {
-        if (!value.match(/^[0-9]{10}$/)) {
-          throw new Error('Invalid phone number');
-        }
-      },
     },
     username: {
       type: String,
@@ -82,6 +76,18 @@ userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
   const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
   return !!user;
 };
+
+/**
+ * Check if phone is taken
+ * @param {string} phone - The user's phone
+ * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
+ * @returns {Promise<boolean>}
+ */
+userSchema.statics.isPhoneTaken = async function (phone, excludeUserId) {
+  const user = await this.findOne({ phone, _id: { $ne: excludeUserId } });
+  return !!user;
+};
+
 
 /**
  * Check if password matches the user's password
