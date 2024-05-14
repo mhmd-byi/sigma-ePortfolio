@@ -85,14 +85,14 @@ const resumeSchema = mongoose.Schema(
         trim: true,
     },
     bannerPhoto: {
-        type: [String],
+        type: String,
         trim: true,
     },
     introVideo: {
-        type: [String],
+        type: String,
     },
     profilePhoto: {
-        type: [String],
+        type: String,
         trim: true,
     },
     theme: {
