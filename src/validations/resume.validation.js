@@ -51,6 +51,12 @@ const getResume = {
   }),
 };
 
+const getResumeEmail = {
+  params: Joi.object().keys({
+    email: Joi.string(),
+  }),
+};
+
 const updateResume = {
   params: Joi.object().keys({
     userId: Joi.required().custom(objectId),
@@ -88,4 +94,5 @@ module.exports = {
   getResume,
   updateResume,
   deleteResume,
+  getResumeEmail,
 };

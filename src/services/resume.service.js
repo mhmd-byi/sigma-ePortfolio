@@ -45,7 +45,7 @@ const getResumeByUserEmail = async (email) => {
 
 /**
  * Get resume by user id
- * @param {string} userId
+ * @param {ObjectId} userId
  * @returns {Promise<Resume>}
  */
 const getResumeByUserId = async (userId) => {

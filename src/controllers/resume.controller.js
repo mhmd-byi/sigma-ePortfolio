@@ -25,13 +25,21 @@ const getResume = catchAsync(async (req, res) => {
   res.send(resume);
 });
 
-const getResumeByUserId = async (req, res) => {
+const getResumeByUserId = catchAsync(async (req, res) => {
   const resume = await resumeService.getResumeByUserId(req.params.userId);
   if (!resume) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Resume not found with following user id');
   }
   res.send(resume);
-};
+});
+
+const getResumeByEmail = catchAsync(async (req, res) => {
+  const resume = await resumeService.getResumeByUserEmail(req.params.email);
+  if (!resume) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Resume not found with following user email');
+  }
+  res.send(resume);
+})
 
 const updateResume = catchAsync(async (req, res) => {
   const resume = await resumeService.updateResumeById(req.params.resumeId, req.body);
@@ -50,4 +58,5 @@ module.exports = {
   updateResume,
   deleteResume,
   getResumeByUserId,
+  getResumeByEmail,
 };
