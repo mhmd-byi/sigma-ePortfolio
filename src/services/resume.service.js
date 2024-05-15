@@ -44,6 +44,15 @@ const getResumeByUserEmail = async (email) => {
 };
 
 /**
+ * Get resume by user id
+ * @param {string} userId
+ * @returns {Promise<Resume>}
+ */
+const getResumeByUserId = async (userId) => {
+  return Resume.findOne({ user: userId });
+};
+
+/**
  * Update resume by id
  * @param {ObjectId} userEmail
  * @param {Object} updateBody
@@ -80,4 +89,5 @@ module.exports = {
   getResumeByUserEmail,
   updateResumeById,
   deleteResumeById,
+  getResumeByUserId,
 };

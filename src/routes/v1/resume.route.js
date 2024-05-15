@@ -16,4 +16,8 @@ router
   .patch(validate(resumeValidation.updateResume), resumeController.updateResume)
   .delete(validate(resumeValidation.deleteResume), resumeController.deleteResume);
 
+router
+  .route('/:userId')
+  .get(validate(resumeValidation.getResume), resumeController.getResumeByUserId);
+
 module.exports = router;

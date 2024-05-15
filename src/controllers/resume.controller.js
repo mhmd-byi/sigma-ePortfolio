@@ -25,6 +25,14 @@ const getResume = catchAsync(async (req, res) => {
   res.send(resume);
 });
 
+const getResumeByUserId = async (req, res) => {
+  const resume = await resumeService.getResumeByUserId(req.params.userId);
+  if (!resume) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Resume not found with following user id');
+  }
+  res.send(resume);
+};
+
 const updateResume = catchAsync(async (req, res) => {
   const resume = await resumeService.updateResumeById(req.params.resumeId, req.body);
   res.send(resume);
@@ -41,4 +49,5 @@ module.exports = {
   getResume,
   updateResume,
   deleteResume,
+  getResumeByUserId,
 };
