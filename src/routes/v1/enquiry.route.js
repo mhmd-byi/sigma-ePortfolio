@@ -9,8 +9,6 @@ router
     .route('/')
     .post(validate(enquiryValidation.createEnquiry), enquiryController.createEnquiry);
 
-router
-  .route('/:userId')
-  .get(enquiryController.getEnquiryByUserId)
+router.route('/enquiry-user-id/:userId').get(enquiryController.getEnquiryByUserId)
 
 module.exports = router;
