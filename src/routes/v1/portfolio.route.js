@@ -16,4 +16,6 @@ router
   .patch(validate(portfolioValidation.updatePortfolio), portfolioController.updatePortfolio)
   .delete(validate(portfolioValidation.deletePortfolio), portfolioController.deletePortfolio);
 
+router.route('/portfolio-user-id/:userId').get(portfolioController.getPortfolioByUserId);
+
 module.exports = router;

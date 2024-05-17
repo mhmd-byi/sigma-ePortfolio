@@ -49,6 +49,17 @@ const getPortfolioByUserEmail = async (email) => {
  * @param {Object} updateBody
  * @returns {Promise<Portfolio>}
  */
+
+const getPortfolioByUserId = async (userId) => {
+  return Portfolio.findOne({ user: userId });
+};
+/**
+ * Update resume by id
+ * @param {ObjectId} userEmail
+ * @param {Object} updateBody
+ * @returns {Promise<Portfolio>}
+ */
+
 const updatePortfolioById = async (userEmail, updateBody) => {
   const portfolio = await getPortfolioByUserEmail(userEmail);
   if (!portfolio) {
@@ -65,7 +76,7 @@ const updatePortfolioById = async (userEmail, updateBody) => {
  * @returns {Promise<Portfolio>}
  */
 const deletePortfolioById = async (portfolioId) => {
-  const portfolio= await Portfolio.findById(portfolioId);
+  const portfolio = await Portfolio.findById(portfolioId);
   if (!portfolio) {
     throw new ApiError(httpStatus.NOT_FOUND, 'portfolio not found');
   }
@@ -80,4 +91,5 @@ module.exports = {
   getPortfolioByUserEmail,
   updatePortfolioById,
   deletePortfolioById,
+  getPortfolioByUserId
 };

@@ -35,10 +35,19 @@ const deletePortfolio = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
+const getPortfolioByUserId = catchAsync(async (req, res) => {
+  const portfolio = await PortfolioService.getPortfolioByUserId(req.params.userId);
+  if (!portfolio) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Portfolio not found with following user id');
+  }
+  res.send(portfolio);
+});
+
 module.exports = {
   createPortfolio,
   getPortfolios,
   getPortfolio,
   updatePortfolio,
   deletePortfolio,
+  getPortfolioByUserId
 };

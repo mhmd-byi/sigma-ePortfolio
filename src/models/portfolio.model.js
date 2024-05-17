@@ -1,127 +1,151 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const { toJSON, paginate } = require('./plugins');
+const { required } = require('joi');
 
 const portfolioSchema = mongoose.Schema(
   {
+    profilePhoto: {
+      type: String,
+      trim: true,
+    },
     name: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     phone: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     address: {
-        type: String,
-        required: true,
-        trim: true,
+      type: String,
+      required: true,
+      trim: true,
     },
     customDomain: {
-        type: String,
-        trim: true,
+      type: String,
+      trim: true,
+      required: true,
     },
-    aboutMe: {
-        type: String,
-        trim: true,
+    about: {
+      type: String,
+      trim: true,
+      required: true,
     },
-    projectDescription: {
-        type: String,
-        trim: true,
-    },
-    projectName: {
-        type: String,
-        trim: true,
-    },
-    skills: {
-        type: [String],
-        trim: true,
-    },
-    techSkills: {
-        type: [String],
-        trim: true,
-    },
-    courseName: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    courseStartYear: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    courseEndYear: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    percentage: {
-        type: String,
-        trim: true,
+    designation: {
+      type: String,
+      trim: true,
+      required: true,
     },
     companyName: {
-        type: String,
-        trim: true,
-    },
-    jobTitle: {
-        type: String,
-        trim: true,
-    },
-    workingStartYear: {
-        type: String,
-        trim: true,
-    },
-    workingEndYear: {
-        type: String,
-        trim: true,
-    },
-    details: {
-        type: String,
-        trim: true,
-    },
-    bannerPhoto: {
-        type: String,
-        trim: true,
-    },
-    introVideo: {
-        type: String,
-    },
-    profilePhoto: {
-        type: String,
-        trim: true,
-    },
-    theme: {
-        type: String,
-        trim: true,
-        required: true,
+      type: String,
+      trim: true,
+      required: true,
     },
     linkedInProfileUrl: {
-        type: String,
-        trim: true,
-        required: true,
+      type: String,
+      trim: true,
     },
-    achievements: {
-        type: [String],
+    facebookInProfileUrl: {
+      type: String,
+      trim: true,
     },
-    certificate: {
-        type: [String],
+    instagramProfileUrl: {
+      type: String,
+      trim: true,
     },
-    userCompanyProfile: {
-        type: String,
+    twitterProfileUrl: {
+      type: String,
+      trim: true,
     },
-    universityName: {
-        type: String,
+    theme: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    serviceOneImage: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    serviceOneName: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    serviceOneDescription: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    serviceOnePrice: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    serviceTwoName: {
+      type: String,
+      trim: true,
+    },
+    serviceTwoImage: {
+      type: String,
+      trim: true,
+    },
+    serviceTwoDescription: {
+      type: String,
+      trim: true,
+    },
+    serviceTwoPrice: {
+      type: String,
+      trim: true,
+    },
+    serviceThreeName: {
+      type: String,
+      trim: true,
+    },
+    serviceThreeImage: {
+      type: String,
+      trim: true,
+    },
+    serviceThreeDescription: {
+      type: String,
+      trim: true,
+    },
+    serviceThreePrice: {
+      type: String,
+      trim: true,
+    },
+    googlePayUPIId: {
+      type: String,
+      trim: true,
+    },
+    phonePayUPIId: {
+      type: String,
+      trim: true,
+    },
+    paytmUPIId: {
+      type: String,
+      trim: true,
+    },
+    amazonPayUPIId: {
+      type: String,
+      trim: true,
+    },
+    videos: {
+      type: [String],
+    },
+    galleryImages: {
+      type: [String],
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
-  },
+    },
   },
   {
     timestamps: true,

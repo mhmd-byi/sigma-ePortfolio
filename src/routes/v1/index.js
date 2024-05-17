@@ -1,6 +1,7 @@
 const express = require('express');
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
+const enquiryRoute = require('./enquiry.route');
 const docsRoute = require('./docs.route');
 const resumeRoute = require('./resume.route');
 const portfolioRoute = require('./portfolio.route');
@@ -24,6 +25,10 @@ const defaultRoutes = [
   {
     path: '/portfolio',
     route: portfolioRoute,
+  },
+  {
+    path: '/enquiry',
+    route: enquiryRoute,
   }
 ];
 
