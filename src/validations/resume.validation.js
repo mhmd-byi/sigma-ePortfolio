@@ -47,7 +47,7 @@ const getResumes = {
 
 const getResume = {
   params: Joi.object().keys({
-    userId: Joi.string().custom(objectId),
+    resumeId: Joi.string().custom(objectId),
   }),
 };
 
