@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Portfolio } = require('../models');
+const { Portfolio, User } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -53,6 +53,16 @@ const getPortfolioByUserEmail = async (email) => {
 const getPortfolioByUserId = async (userId) => {
   return Portfolio.findOne({ user: userId });
 };
+
+const getUserByPortfolioId = async (id) => {
+  const user = await Portfolio.findById(id);
+  console.log(user);
+
+  const userId = await User.findById(user.user);
+  return userId.id;
+};
+
+
 /**
  * Update resume by id
  * @param {ObjectId} userEmail
@@ -91,5 +101,6 @@ module.exports = {
   getPortfolioByUserEmail,
   updatePortfolioById,
   deletePortfolioById,
-  getPortfolioByUserId
+  getPortfolioByUserId,
+  getUserByPortfolioId,
 };

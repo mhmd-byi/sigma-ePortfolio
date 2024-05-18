@@ -17,5 +17,6 @@ router
   .delete(validate(portfolioValidation.deletePortfolio), portfolioController.deletePortfolio);
 
 router.route('/portfolio-user-id/:userId').get(portfolioController.getPortfolioByUserId);
+router.route('/portfolio-user/:portfolioId').get(portfolioController.getUserByPortfolioId);
 
 module.exports = router;
