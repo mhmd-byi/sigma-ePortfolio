@@ -55,7 +55,7 @@ const getPortfolios = {
 
 const getPortfolio = {
   params: Joi.object().keys({
-    userId: Joi.string().custom(objectId),
+    portfolioId: Joi.string().custom(objectId),
   }),
 };
 
